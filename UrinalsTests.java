@@ -7,7 +7,10 @@ public class UrinalsTests {
     void testIsValidTrue() {
         System.out.println("====== Sameer Mungole == TEST ONE EXECUTED =======");
 
-        String[] cases = { "0000", "0001", "1000", "1001" };
+        String[] cases = {
+                "0000", "0001", "1000", "1001", "0100",
+                "0101010", "1010101", "1001001", "1001001001"
+        };
         Urinals urinals = new Urinals();
         for (String test : cases) {
             Boolean actual = urinals.isValid(test);
