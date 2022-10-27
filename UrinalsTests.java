@@ -1,5 +1,6 @@
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,6 +41,35 @@ public class UrinalsTests {
         for (String test : cases) {
             Boolean actual = urinals.isValid(test);
             assertFalse(String.format("%s should return false", test), actual);
+        }
+    }
+
+    @Test
+    void testCountEmptyUrinalsInvalid() {
+        System.out.println("====== Sameer Mungole == TEST THREE EXECUTED =======");
+
+        EmptyUrinalTestCase[] cases = {
+                new EmptyUrinalTestCase("011", -1),
+                new EmptyUrinalTestCase("110", -1),
+                new EmptyUrinalTestCase("10011001", -1),
+        };
+        for (EmptyUrinalTestCase test : cases) {
+            Integer actual = urinals.countEmptyUrinals(test.input);
+            assertEquals(test.expected, actual, test.message(actual));
+        }
+    }
+
+    private class EmptyUrinalTestCase {
+        String input;
+        Integer expected;
+
+        EmptyUrinalTestCase(String input, Integer expected) {
+            this.input = input;
+            this.expected = expected;
+        }
+
+        String message(Integer actual) {
+            return String.format("expected: %d, got: %d", expected, actual);
         }
     }
 }
