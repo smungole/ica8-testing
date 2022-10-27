@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.AfterEach;
@@ -28,6 +29,17 @@ public class UrinalsTests {
         for (String test : cases) {
             Boolean actual = urinals.isValid(test);
             assertTrue(String.format("%s should return true", test), actual);
+        }
+    }
+
+    @Test
+    void testIsValidFalse() {
+        System.out.println("====== Sameer Mungole == TEST TWO EXECUTED =======");
+
+        String[] cases = { "011", "110", "10011001" };
+        for (String test : cases) {
+            Boolean actual = urinals.isValid(test);
+            assertFalse(String.format("%s should return false", test), actual);
         }
     }
 }
