@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
  * @author Sameer Mungole - smungole
  */
 public class Urinals {
-    private static final Pattern REGEX = Pattern.compile("^1?0+1?$");
+    private static final Pattern REGEX = Pattern.compile("^0*(1?0+)*1?$");
 
     /**
      * Check to see if the string is valid
