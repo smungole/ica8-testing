@@ -1,11 +1,12 @@
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
@@ -103,12 +104,35 @@ public class UrinalsTests {
     }
 
     @Test
-    void testRead() throws FileNotFoundException {
+    void testRead() {
         System.out.println("====== Sameer Mungole == TEST SIX EXECUTED =======");
 
-        String fileName = "urinal.dat";
-        List<String> contents = urinals.read(fileName);
-        assertNotNull("should not return null", contents);
+        String fileName = "input/urinal.dat";
+        try {
+            List<String> contents = urinals.read(fileName);
+            assertNotNull("should not return null", contents);
+        } catch (FileNotFoundException e) {
+            fail("should not return FileNotFoundException");
+        }
+    }
+
+    @Test
+    void testWrite() {
+        System.out.println("====== Sameer Mungole == TEST SEVEN EXECUTED =======");
+
+        try {
+            List<Integer> result = List.of(1, 0, 3, 2, 1);
+            String fileName = urinals.write(result);
+            assertNotNull("should not return null", fileName);
+
+            List<String> expected = List.of("1", "0", "3", "2", "1");
+            List<String> contents = urinals.read(fileName);
+            assertIterableEquals(expected, contents);
+        } catch (FileNotFoundException e) {
+            fail("should not return FileNotFoundException");
+        } catch (IOException e) {
+            fail("should not return IOException");
+        }
     }
 
     private class EmptyUrinalTestCase {
