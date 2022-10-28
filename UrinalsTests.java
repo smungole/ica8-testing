@@ -1,6 +1,9 @@
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.io.FileNotFoundException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -86,6 +89,14 @@ public class UrinalsTests {
             Integer actual = urinals.countEmptyUrinals(test.input);
             assertEquals(test.expected, actual, test.message(actual));
         }
+    }
+
+    @Test
+    void testReadFileNotFound() {
+        System.out.println("====== Sameer Mungole == TEST FIVE EXECUTED =======");
+
+        String fileName = "not-urinal.dat";
+        assertThrows(FileNotFoundException.class, () -> urinals.read(fileName));
     }
 
     private class EmptyUrinalTestCase {
