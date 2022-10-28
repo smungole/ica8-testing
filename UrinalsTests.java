@@ -39,7 +39,7 @@ public class UrinalsTests {
 
         String[] cases = {
                 "011", "110", "10011001", "158043", "APLHAbets", "a1phanum5ric",
-                "w h i t e\ts p a c e s", "!@#$%^&*-_=+;:\"',<.>/?\\",
+                " \t\r\n", "!@#$%^&*-_=+;:\"',<.>/?\\", "",
         };
         for (String test : cases) {
             Boolean actual = urinals.isValid(test);
@@ -78,8 +78,9 @@ public class UrinalsTests {
                 new EmptyUrinalTestCase("158043", -1),
                 new EmptyUrinalTestCase("APLHAbets", -1),
                 new EmptyUrinalTestCase("a1phanum5ric", -1),
-                new EmptyUrinalTestCase("w h i t e\ts p a c e s", -1),
+                new EmptyUrinalTestCase(" \t\r\n", -1),
                 new EmptyUrinalTestCase("!@#$%^&*-_=+;:\"',<.>/?\\", -1),
+                new EmptyUrinalTestCase("", -1),
         };
         for (EmptyUrinalTestCase test : cases) {
             Integer actual = urinals.countEmptyUrinals(test.input);
