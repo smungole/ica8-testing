@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
  * @author Sameer Mungole - smungole
  */
 public class Urinals {
+    private static final char ONE = '1';
     private static final Pattern REGEX = Pattern.compile("^0*(1?0+)*1?$");
 
     /**
@@ -32,6 +33,31 @@ public class Urinals {
             return -1;
         }
 
-        return 0;
+        char[] urinals = restroom.toCharArray();
+
+        Integer count = 0;
+        int total = urinals.length;
+        for (int i = 0; i < total; i++) {
+            if (urinals[i] == ONE) {
+                // if this position is occupied, skip
+                continue;
+            }
+            if (i == 0 && urinals[i + 1] == ONE) {
+                // if the second position is occupied, skip
+                continue;
+            }
+            if (i == total - 1 && urinals[i - 1] == ONE) {
+                // if the second last is occupied, skip
+                continue;
+            }
+            if (i > 0 && i < total - 1 && (urinals[i - 1] == ONE || urinals[i + 1] == ONE)) {
+                // if any of the adjacent positions are occupied, skip
+                continue;
+            }
+
+            urinals[i] = ONE;
+            count++;
+        }
+        return count;
     }
 }
