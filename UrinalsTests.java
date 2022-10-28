@@ -1,6 +1,3 @@
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.FileNotFoundException;
@@ -10,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +34,7 @@ public class UrinalsTests {
         };
         for (String test : cases) {
             Boolean actual = urinals.isValid(test);
-            assertTrue(String.format("%s should return true", test), actual);
+            Assertions.assertTrue(actual, String.format("%s should return true", test));
         }
     }
 
@@ -50,7 +48,7 @@ public class UrinalsTests {
         };
         for (String test : cases) {
             Boolean actual = urinals.isValid(test);
-            assertFalse(String.format("%s should return false", test), actual);
+            Assertions.assertFalse(actual, String.format("%s should return false", test));
         }
     }
 
@@ -110,7 +108,7 @@ public class UrinalsTests {
         String fileName = "input/urinal.dat";
         try {
             List<String> contents = urinals.read(fileName);
-            assertNotNull("should not return null", contents);
+            Assertions.assertNotNull(contents, "should not return null");
         } catch (FileNotFoundException e) {
             fail("should not return FileNotFoundException");
         }
@@ -129,7 +127,7 @@ public class UrinalsTests {
         System.out.println("====== Sameer Mungole == TEST EIGHT EXECUTED =======");
 
         String path = urinals.getOutputFilePath().toString();
-        assertTrue(String.format("incorrect file path: %s", path), path.startsWith("output/rule"));
+        Assertions.assertTrue(path.startsWith("output/rule"), String.format("incorrect file path: %s", path));
     }
 
     @Test
@@ -151,7 +149,7 @@ public class UrinalsTests {
         }
     }
 
-    private class EmptyUrinalTestCase {
+    private static class EmptyUrinalTestCase {
         String input;
         Integer expected;
 

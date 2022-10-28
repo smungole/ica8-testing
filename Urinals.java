@@ -44,7 +44,7 @@ public class Urinals {
     /**
      * Check to see if the pattern is valid
      * 
-     * @param pattern
+     * @param pattern String
      * @return true, if the pattern doesn't have any consecutive 1s
      */
     public Boolean isValid(String pattern) {
@@ -55,7 +55,7 @@ public class Urinals {
      * A function that returns the maximum of free urinals as an integer according
      * to the unwritten rule.
      * 
-     * @param restroom
+     * @param restroom String
      * @return total number of empty urinals from currently state of the
      *         restroom, given that no consecutive urinals should be occupied
      */
@@ -101,9 +101,9 @@ public class Urinals {
     /**
      * Read contents from input file for empty urinal counting
      * 
-     * @param fileName
+     * @param fileName String
      * @return list of input lines read from given file
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException when file is not found
      */
     public List<String> read(String fileName) throws FileNotFoundException {
         Scanner sc = new Scanner(new File(fileName));
@@ -125,13 +125,13 @@ public class Urinals {
     /**
      * Writes result of empty urinals counting to output file
      *
-     * @param contents
-     * @param path
+     * @param contents List<Integer>
+     * @param path Path
      */
     public void write(List<Integer> contents, Path path) throws IOException {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < contents.size(); i++) {
-            sb.append(contents.get(i));
+        for (Integer content : contents) {
+            sb.append(content);
             sb.append('\n');
         }
 
