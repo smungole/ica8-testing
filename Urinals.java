@@ -67,4 +67,15 @@ public class Urinals {
         }
         return count;
     }
+
+    /**
+     * Read contents from input file for empty urinal counting
+     * 
+     * @param fileName
+     * @return list of input lines read from given file
+     */
+    public String[] read(String fileName) {
+        System.out.println("Not yet implemented");
+        return new String[] {};
+    }
 }
