@@ -18,7 +18,7 @@ public class Urinals {
      * @return true, if the pattern doesn't have any consecutive 1s
      */
     public Boolean isValid(String pattern) {
-        return REGEX.matcher(pattern).find();
+        return pattern != null && !pattern.isEmpty() && REGEX.matcher(pattern).find();
     }
 
     /**
