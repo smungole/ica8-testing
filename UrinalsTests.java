@@ -56,7 +56,10 @@ public class UrinalsTests {
                 new EmptyUrinalTestCase("1001", 0),
                 new EmptyUrinalTestCase("00000", 3),
                 new EmptyUrinalTestCase("0000", 2),
-                new EmptyUrinalTestCase("01000", 1),
+                new EmptyUrinalTestCase("0", 1),
+                new EmptyUrinalTestCase("1", 0),
+                new EmptyUrinalTestCase("00", 1),
+                new EmptyUrinalTestCase("01", 0),
         };
         for (EmptyUrinalTestCase test : cases) {
             Integer actual = urinals.countEmptyUrinals(test.input);
@@ -94,7 +97,8 @@ public class UrinalsTests {
         }
 
         String message(Integer actual) {
-            return String.format("expected: %d, got: %d", expected, actual);
+            return String.format("input: %s, expected: %d, got: %d",
+                    input, expected, actual);
         }
     }
 }
