@@ -103,7 +103,7 @@ public class UrinalsTests {
     }
 
     @Test
-    void testRead() throws IOException {
+    void testRead() throws FileNotFoundException {
         System.out.println("====== Sameer Mungole == TEST SIX EXECUTED =======");
 
         String fileName = "urinal.dat";

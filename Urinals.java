@@ -1,3 +1,12 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
@@ -7,6 +16,11 @@ import java.util.regex.Pattern;
  * @author Sameer Mungole - smungole
  */
 public class Urinals {
+    public static void main(String[] args) {
+        boolean exists = Files.exists(Paths.get("input/urinal.dat"));
+        System.out.println(exists);
+    }
+
     private static final char ZERO = '0';
     private static final char ONE = '1';
     private static final Pattern REGEX = Pattern.compile("^0*(1?0+)*1?$");
@@ -73,9 +87,23 @@ public class Urinals {
      * 
      * @param fileName
      * @return list of input lines read from given file
+     * @throws FileNotFoundException
      */
-    public String[] read(String fileName) {
-        System.out.println("Not yet implemented");
-        return new String[] {};
+    public List<String> read(String fileName) throws IOException {
+        String path = String.format("input%s%s", File.separator, fileName);
+        Scanner sc = new Scanner(new File(path));
+        sc.useDelimiter("\n");
+
+        List<String> lines = new ArrayList<>();
+        while (sc.hasNext()) {
+            String line = sc.next();
+            if (line.equals("-1")) {
+                break;
+            }
+            lines.add(line);
+        }
+
+        sc.close();
+        return lines;
     }
 }
