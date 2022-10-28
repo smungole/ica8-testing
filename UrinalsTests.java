@@ -37,7 +37,10 @@ public class UrinalsTests {
     void testIsValidFalse() {
         System.out.println("====== Sameer Mungole == TEST TWO EXECUTED =======");
 
-        String[] cases = { "011", "110", "10011001" };
+        String[] cases = {
+                "011", "110", "10011001", "158043", "APLHAbets", "a1phanum5ric",
+                "w h i t e\ts p a c e s", "!@#$%^&*-_=+;:\"',<.>/?\\",
+        };
         for (String test : cases) {
             Boolean actual = urinals.isValid(test);
             assertFalse(String.format("%s should return false", test), actual);
@@ -52,6 +55,11 @@ public class UrinalsTests {
                 new EmptyUrinalTestCase("011", -1),
                 new EmptyUrinalTestCase("110", -1),
                 new EmptyUrinalTestCase("10011001", -1),
+                new EmptyUrinalTestCase("158043", -1),
+                new EmptyUrinalTestCase("APLHAbets", -1),
+                new EmptyUrinalTestCase("a1phanum5ric", -1),
+                new EmptyUrinalTestCase("w h i t e\ts p a c e s", -1),
+                new EmptyUrinalTestCase("!@#$%^&*-_=+;:\"',<.>/?\\", -1),
         };
         for (EmptyUrinalTestCase test : cases) {
             Integer actual = urinals.countEmptyUrinals(test.input);
