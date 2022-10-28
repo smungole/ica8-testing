@@ -115,6 +115,19 @@ public class UrinalsTests {
     }
 
     @Test
+    void testReadEmptyFile() {
+        System.out.println("====== Sameer Mungole == TEST TEN EXECUTED =======");
+
+        String fileName = "input/urinal_empty.dat";
+        try {
+            List<String> contents = urinals.read(fileName);
+            Assertions.assertTrue(contents.isEmpty());
+        } catch (FileNotFoundException e) {
+            fail("should not return FileNotFoundException");
+        }
+    }
+
+    @Test
     void testWriteThrows() {
         System.out.println("====== Sameer Mungole == TEST NINE EXECUTED =======");
 
