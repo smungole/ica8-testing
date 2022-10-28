@@ -3,7 +3,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,14 +15,31 @@ import java.util.regex.Pattern;
  * @author Sameer Mungole - smungole
  */
 public class Urinals {
-    public static void main(String[] args) {
-        boolean exists = Files.exists(Paths.get("input/urinal.dat"));
-        System.out.println(exists);
-    }
-
     private static final char ZERO = '0';
     private static final char ONE = '1';
     private static final Pattern REGEX = Pattern.compile("^0*(1?0+)*1?$");
+
+    public static void main(String[] args) throws Exception {
+        Urinals urinals = new Urinals();
+
+        String inputFileName = String.format("input%s%s", File.separator, "urinal.dat");
+        List<String> contents = urinals.read(inputFileName);
+
+        System.out.printf("\n\tInput file: %s read successfully\n\t", inputFileName);
+        System.out.println(contents);
+
+        List<Integer> results = new ArrayList<>();
+        System.out.println("\n\tFinding count of empty urinals...");
+        for (String restroom : contents) {
+            Integer count = urinals.countEmptyUrinals(restroom);
+            System.out.printf("\t\t%s -> %d\n", restroom, count);
+            results.add(count);
+        }
+
+        Path outputFilePath = urinals.getOutputFilePath();
+        urinals.write(results, outputFilePath);
+        System.out.printf("\n\tWritten results to output file: %s\n\n", outputFilePath.toString());
+    }
 
     /**
      * Check to see if the pattern is valid
