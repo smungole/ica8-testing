@@ -141,7 +141,8 @@ public class Urinals {
 
     /**
      * Output to rule.txt. If the file rule.txt already exists, increment a counter
-     * and rename the file using the following rule pattern: rule1.txt, rule2.txt, etc.
+     * and rename the file using the following rule pattern: rule1.txt, rule2.txt,
+     * etc.
      *
      * @return Returns the Path object for output file
      */
