@@ -28,7 +28,10 @@ public class Urinals {
      *         restroom, given that no consecutive urinals should be occupied
      */
     public Integer countEmptyUrinals(String restroom) {
-        System.out.println("Not yet implemented");
+        if (!isValid(restroom)) {
+            return -1;
+        }
+
         return 0;
     }
 }
