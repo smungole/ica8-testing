@@ -1,0 +1,1 @@
+This is the directory where all the generated output files are stored.
