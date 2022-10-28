@@ -48,6 +48,23 @@ public class UrinalsTests {
     }
 
     @Test
+    void testCountEmptyUrinals() {
+        System.out.println("====== Sameer Mungole == TEST FOUR EXECUTED =======");
+
+        EmptyUrinalTestCase[] cases = {
+                new EmptyUrinalTestCase("10001", 1),
+                new EmptyUrinalTestCase("1001", 0),
+                new EmptyUrinalTestCase("00000", 3),
+                new EmptyUrinalTestCase("0000", 2),
+                new EmptyUrinalTestCase("01000", 1),
+        };
+        for (EmptyUrinalTestCase test : cases) {
+            Integer actual = urinals.countEmptyUrinals(test.input);
+            assertEquals(test.expected, actual, test.message(actual));
+        }
+    }
+
+    @Test
     void testCountEmptyUrinalsInvalid() {
         System.out.println("====== Sameer Mungole == TEST THREE EXECUTED =======");
 
