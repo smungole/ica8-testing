@@ -118,6 +118,14 @@ public class UrinalsTests {
     }
 
     @Test
+    void testWriteThrows() {
+        System.out.println("====== Sameer Mungole == TEST NINE EXECUTED =======");
+
+        Path path = Path.of("not-output/rule.txt");
+        assertThrows(IOException.class, () -> urinals.write(new ArrayList<>(), path));
+    }
+
+    @Test
     void testGetOutputPath() {
         System.out.println("====== Sameer Mungole == TEST EIGHT EXECUTED =======");
 
