@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
  * @author Sameer Mungole - smungole
  */
 public class Urinals {
+    private static final char ZERO = '0';
     private static final char ONE = '1';
     private static final Pattern REGEX = Pattern.compile("^0*(1?0+)*1?$");
 
@@ -34,6 +35,12 @@ public class Urinals {
         }
 
         char[] urinals = restroom.toCharArray();
+        switch (urinals.length) { // check for base cases
+            case 1:
+                return urinals[0] == ZERO ? 1 : 0;
+            case 2:
+                return restroom.equals("00") ? 1 : 0;
+        }
 
         Integer count = 0;
         int total = urinals.length;
