@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,9 +88,8 @@ public class Urinals {
      * @return list of input lines read from given file
      * @throws FileNotFoundException
      */
-    public List<String> read(String fileName) throws IOException {
-        String path = String.format("input%s%s", File.separator, fileName);
-        Scanner sc = new Scanner(new File(path));
+    public List<String> read(String fileName) throws FileNotFoundException {
+        Scanner sc = new Scanner(new File(fileName));
         sc.useDelimiter("\n");
 
         List<String> lines = new ArrayList<>();
@@ -105,5 +103,16 @@ public class Urinals {
 
         sc.close();
         return lines;
+    }
+
+    /**
+     * Writes result of empty urinals counting to output file
+     *
+     * @param result
+     * @return Returns the file name of the output file
+     */
+    public String write(List<Integer> result) throws IOException {
+        System.out.println("Not yet implemented");
+        return null;
     }
 }
