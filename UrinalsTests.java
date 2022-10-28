@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,16 +118,23 @@ public class UrinalsTests {
     }
 
     @Test
+    void testGetOutputPath() {
+        System.out.println("====== Sameer Mungole == TEST EIGHT EXECUTED =======");
+
+        String path = urinals.getOutputFilePath().toString();
+        assertTrue(String.format("incorrect file path: %s", path), path.startsWith("output/rule"));
+    }
+    @Test
     void testWrite() {
         System.out.println("====== Sameer Mungole == TEST SEVEN EXECUTED =======");
 
         try {
             List<Integer> result = List.of(1, 0, 3, 2, 1);
-            String fileName = urinals.write(result);
-            assertNotNull("should not return null", fileName);
+            Path path = urinals.getOutputFilePath();
+            urinals.write(result, path);
 
             List<String> expected = List.of("1", "0", "3", "2", "1");
-            List<String> contents = urinals.read(fileName);
+            List<String> contents = urinals.read(path.toString());
             assertIterableEquals(expected, contents);
         } catch (FileNotFoundException e) {
             fail("should not return FileNotFoundException");
