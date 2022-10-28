@@ -124,6 +124,7 @@ public class UrinalsTests {
         String path = urinals.getOutputFilePath().toString();
         assertTrue(String.format("incorrect file path: %s", path), path.startsWith("output/rule"));
     }
+
     @Test
     void testWrite() {
         System.out.println("====== Sameer Mungole == TEST SEVEN EXECUTED =======");

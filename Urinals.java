@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -108,11 +109,34 @@ public class Urinals {
     /**
      * Writes result of empty urinals counting to output file
      *
-     * @param result
-     * @return Returns the file name of the output file
+     * @param contents
+     * @param path
      */
-    public String write(List<Integer> result) throws IOException {
-        System.out.println("Not yet implemented");
-        return null;
+    public void write(List<Integer> contents, Path path) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < contents.size(); i++) {
+            sb.append(contents.get(i));
+            sb.append('\n');
+        }
+
+        String data = sb.toString().trim();
+        Files.writeString(path, data);
+    }
+
+    /**
+     * Output to rule.txt. If the file rule.txt already exists, increment a counter
+     * and rename the file using the following rule pattern: rule1.txt, rule2.txt, etc.
+     *
+     * @return Returns the Path object for output file
+     */
+    public Path getOutputFilePath() {
+        String fileName = "rule";
+        Path path = Path.of(String.format("output%s%s.txt", File.separator, fileName));
+        int count = 0;
+        while (Files.exists(path)) {
+            count++;
+            path = Path.of(String.format("output%s%s%d.txt", File.separator, fileName, count));
+        }
+        return path;
     }
 }
