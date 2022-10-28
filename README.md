@@ -2,11 +2,41 @@
 
 Using GitHub, Java and JUnit 5 (Jupiter), create a Test Driven Development (TDD) program for counting urinals.
 
+## How To
+
+### Test
+
+1. Open the project using IntelliJ IDEA code editor
+2. Navigate to **UrinalsTests.java** file
+3. In the top right corner, besides the `run` button, select **UrinalsTests** as *Run Configuration*
+4. Click on the `run` button to execute all the test cases.
+
+#### Test Cases Output
+
+<img src="assets/ica8-testing-tests.png" alt="Urinal Main Output" width="600dp">
+
+### Run
+
+1. Open the project using IntelliJ IDEA code editor
+2. Navigate to **Urinals.java** file
+3. In the top right corner, besides the `run` button, select **Current File** as *Run Configuration*
+4. Click on the `run` button to execute the `main` method.
+
+#### Output
+
+<img src="assets/ica8-testing-demo.png" alt="Urinal Main Output" width="600dp">
+
+### Environment
+
+- JavaSE-11
+- junit-platform-console-standalone-1.9.1.jar
+- IntelliJ IDEA 2022.2.3 (Community Edition)
+
 ## Problem Statement
 
 In men's public toilets with urinals, there is this unwritten rule that you leave at least one urinal free between you and the next person peeing. For example if there are 3 urinals and one person is already peeing in the left one, you will choose the urinal on the right and not the one in the middle. That means that a maximum of 3 people can pee at the same time on public toilets with 5 urinals when following this rule (Only 2 if the first person pees into urinal 2 or 4).
 
-<img src="assets/urinal.png" alt="Design Patterns Output" width="600dp">
+<img src="assets/urinal.png" alt="Urinal Image" width="600dp">
 
 ### Task
 
